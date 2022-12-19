@@ -10,6 +10,8 @@ const helpers = require("./helpers");
 // native application id
 var appID = "com.github.browserpass.native";
 
+var extensionID = "<edit me>";
+
 // default settings
 var defaultSettings = {
     autoSubmit: false,
@@ -855,7 +857,11 @@ function hostAction(settings, action, params = {}) {
         request[key] = params[key];
     }
 
-    return chrome.runtime.sendNativeMessage(appID, request);
+    if (false) {
+        return chrome.runtime.sendNativeMessage(appID, request);
+    } else {
+        return chrome.runtime.sendMessage(extensionID, request);
+    }
 }
 
 /**
